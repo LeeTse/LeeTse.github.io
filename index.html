@@ -9,9 +9,9 @@
     
 		document.getElementsByTagName('button')[0].onclick = function sendMessage(){
 			console.log(WeixinJSBridge);
-			WeixinJSBridge.call('hideOptionMenu');
+			//WeixinJSBridge.call('hideOptionMenu');
 
-			/*WeixinJSBridge.on('menu:share:appmessage', function(argv){
+			WeixinJSBridge.on('menu:share:appmessage', function(argv){
 				WeixinJSBridge.invoke('sendAppMessage',{
 					"appid":"", //appid 设置空就好了。
 					"img_url": 'http://a0.att.hudong.com/78/52/01200000123847134434529793168.jpg', //分享时所带的图片路径
@@ -22,9 +22,10 @@
 					"title":"标题，再简单不过了。"
 				}, function(res){
 					alert('OK'); //回调函数，最好设置为空
-				}); 
+				}),function(error){
+					console.log(error)
+				}; 
 			});
-			*/
 		}
 	});
 </script>
