@@ -4,22 +4,28 @@
 	<button>分享</button>
 </body>
 <script>
-	document.getElementsByTagName('button')[0].onclick = function sendMessage(){
-		console.log(WeixinJSBridge);
-		WeixinJSBridge.on('menu:share:appmessage', function(argv){
-			WeixinJSBridge.invoke('sendAppMessage',{
-				"appid":"", //appid 设置空就好了。
-				"img_url": 'http://a0.att.hudong.com/78/52/01200000123847134434529793168.jpg', //分享时所带的图片路径
-				"img_width": "120", //图片宽度
-				"img_height": "120", //图片高度
-				"link":'https://www.baidu.com', //分享附带链接地址
-				"desc":"我是一个介绍", //分享内容介绍
-				"title":"标题，再简单不过了。"
-			}, function(res){
-				alert('OK');
-				/*** 回调函数，最好设置为空 ***/
-			}); 
-		});
-	}
+	document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+    // 通过下面这个API隐藏右上角按钮
+    
+		document.getElementsByTagName('button')[0].onclick = function sendMessage(){
+			console.log(WeixinJSBridge);
+			WeixinJSBridge.call('hideOptionMenu');
+
+			/*WeixinJSBridge.on('menu:share:appmessage', function(argv){
+				WeixinJSBridge.invoke('sendAppMessage',{
+					"appid":"", //appid 设置空就好了。
+					"img_url": 'http://a0.att.hudong.com/78/52/01200000123847134434529793168.jpg', //分享时所带的图片路径
+					"img_width": "120", //图片宽度
+					"img_height": "120", //图片高度
+					"link":'https://www.baidu.com', //分享附带链接地址
+					"desc":"我是一个介绍", //分享内容介绍
+					"title":"标题，再简单不过了。"
+				}, function(res){
+					alert('OK'); //回调函数，最好设置为空
+				}); 
+			});
+			*/
+		}
+	});
 </script>
 </html>
