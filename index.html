@@ -5,7 +5,7 @@
 </body>
 <script>
 	document.getElementsByTagName('button')[0].onclick = function sendMessage(){
-		console.log(666);
+		console.log(WeixinJSBridge);
 		WeixinJSBridge.on('menu:share:appmessage', function(argv){
 			WeixinJSBridge.invoke('sendAppMessage',{
 				"appid":"", //appid 设置空就好了。
